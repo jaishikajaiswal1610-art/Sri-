@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(#ff9eb5,#ff6f91);
+  font-family:Arial;
+  overflow:hidden;
+  text-align:center;
+}
+
+.card{
+  background:#ffb6c1;
+  padding:30px;
+  border-radius:20px;
+  width:320px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+}
+
+#yesBtn{background:#ff4d6d;color:white;}
+#noBtn{background:white;position:absolute;}
+
+.heart{
+ position:absolute;
+ animation:float 6s linear infinite;
+}
+@keyframes float{
+ 0%{transform:translateY(100vh);}
+ 100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="page"></div>
+
+<script>
+
+/* floating hearts */
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.innerHTML="❤️";
+ h.className="heart";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(15+Math.random()*20)+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
+
+/* PAGE 1 */
+function page1(){
+ document.getElementById("page").innerHTML=`
+ <div class="card">
+ <h2>💖 Hey You 💖</h2>
+ <p>You are my special person ✨</p>
+ <p>You make my days brighter and my heart happier 💕</p>
+ <p>Talking to you = best part of my day 🥰</p>
+ <button onclick="page2()">Next 💗</button>
+ </div>`;
+}
+
+/* PAGE 2 */
+function page2(){
+ document.getElementById("page").innerHTML=`
+ <div class="card">
+ <h2>One little question… 😌</h2>
+ <h3>Will you be my Valentine? 💘</h3>
+ <button id="yesBtn" onclick="page3()">Yes ❤️</button>
+ <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+ </div>`;
+}
+
+/* running NO */
+function moveNo(){
+ let btn=document.getElementById("noBtn");
+ btn.style.left=Math.random()*200+"px";
+ btn.style.top=Math.random()*200+"px";
+}
+
+/* PAGE 3 */
+function page3(){
+ document.getElementById("page").innerHTML=`
+ <div class="card">
+ <h2>💗 Thank you Swami 💗</h2>
+ <p>Mujhe pata tha aap yes karoge 😉</p>
+ <p>I know you love me a lot ❤️</p>
+ <p>You will always be my special 💞</p>
+ <p>And I promise to always make you smile 🥰</p>
+ </div>`;
+}
+
+page1();
+</script>
+
+</body>
+</html>
